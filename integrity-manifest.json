@@ -1,8 +1,8 @@
 {
-  "build": "2026-09-29-runtime-v6-source-audited-recovery",
+  "build": "2026-09-29-runtime-v7-graph-restore-ui-cleanup",
   "canonical_source_html_sha256": "517497cd9c0eaef99899caa887d202ed163a81689583a68db3dc0097d30a83f5",
-  "public_sha256": "88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956",
-  "local_sha256": "0ee75ab340bd14e58db00c9f80430722fb251fc4900c8eec9a9559f4163523ef",
+  "public_sha256": "44d239c1a727d58d80edf7cf9fcf147abc099f624ac6e34ac61fe4d3a4de382d",
+  "local_sha256": "44d239c1a727d58d80edf7cf9fcf147abc099f624ac6e34ac61fe4d3a4de382d",
   "runtime_dependencies": [],
   "external_runtime_assets": 0,
   "public_embedded_primary_pdf_bytes": false,
@@ -22,7 +22,8 @@
       "Floridi-SemanticInformationCorrectness-2011.pdf": "52cceec1785f227086cbe79c65fbe93154910f9c86c55a0ac37851abf2d0c599",
       "Sokolowski-MakingDistinctions-1979.pdf": "c2e8dbe3cf6fa5889691848f1743f80f8611604feda9b034ab047ec21982b5b5"
     },
-    "remaining_primary_request": "Exact Marsha Linehan / DBT source for displayed TIPP/dive-reflex numerical constants"
+    "remaining_primary_request": null,
+    "physiology_model_status": "Heart-rate, HRV, cortisol, BOLD, and timing values remain synthetic/illustrative by user decision."
   },
   "explicit_exclusions": [
     "personal walking/mobility telemetry",
@@ -41,7 +42,6 @@
     "inline SVG figures",
     "canvas simulations",
     "procedural audio keys",
-    "Gantt/task inspector",
     "mind map",
     "search/navigation",
     "detachable graphs"
@@ -57,7 +57,11 @@
     "missing_original_ids": 0,
     "inline_handler_functions_resolved": true,
     "javascript_node_check": "pass",
-    "excluded_mobility_dataset_filenames_present": false
+    "excluded_mobility_dataset_filenames_present": false,
+    "little_svg_graphs_visible": true,
+    "gantt_removed": true,
+    "backend_commentary_removed_from_public_ui": true,
+    "svg_graph_count": 15
   },
   "hardening": {
     "network_connections": "blocked by CSP connect-src none",
