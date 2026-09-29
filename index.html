@@ -5,42 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="color-scheme" content="dark">
-<title>Critical Research • Loading verified artifact</title>
+<title>Critical Research</title>
 <style>
 :root{color-scheme:dark;--violet:#9d5cff;--cyan:#5ffbf1;--bg:#09040f}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:#eee7ff;font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background-image:radial-gradient(circle at 18% 12%,#6e2bb95c,transparent 42%),radial-gradient(circle at 82% 78%,#5ffbf11f,transparent 38%)}main{width:min(760px,calc(100vw - 32px));padding:32px;border:1px solid #9d5cff70;border-radius:22px;background:linear-gradient(145deg,#281344cc,#11091dcc);box-shadow:0 0 60px #9d5cff30,inset 0 1px #ffffff13;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}h1{margin:0 0 8px;font-size:clamp(1.65rem,4vw,2.5rem);letter-spacing:-.04em}p{margin:.5rem 0 1rem;color:#cfc3e6}code{color:var(--cyan);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.bar{height:5px;border-radius:999px;background:#2b1645;overflow:hidden}.bar:after{content:"";display:block;height:100%;width:34%;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--cyan));animation:load 1.25s infinite ease-in-out}@keyframes load{0%{transform:translateX(-110%)}50%,100%{transform:translateX(310%)}}@media(prefers-reduced-motion:reduce){.bar:after{animation:none;width:100%}}
 </style>
 </head>
-<body><main><h1>Critical Research</h1><p>Reconstructing the source-audited standalone artifact and verifying its SHA-256 before execution.</p><div class="bar" aria-hidden="true"></div><p><code id="status" role="status">Loading payload…</code></p></main>
+<body><main><h1>Critical Research</h1><p>Loading the research workspace…</p><div class="bar" aria-hidden="true"></div><p><code id="status" role="status">Loading…</code></p></main>
 <script>
 (async()=>{
-  const expected='88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956';
+  const sourceExpected='88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956';
+  const renderedExpected='44d239c1a727d58d80edf7cf9fcf147abc099f624ac6e34ac61fe4d3a4de382d';
   const status=document.getElementById('status');
   const parts=Array.from({length:8},(_,i)=>`./payload-${String(i).padStart(2,'0')}.b64`);
   const texts=[];
-  for(let i=0;i<parts.length;i++){
-    status.textContent=`Loading verified payload ${i+1}/${parts.length}…`;
-    const r=await fetch(parts[i],{cache:'no-store'});
-    if(!r.ok) throw new Error(`Missing ${parts[i]}`);
+  for(const part of parts){
+    const r=await fetch(part,{cache:'no-store'});
+    if(!r.ok) throw new Error('Unable to load workspace.');
     texts.push(await r.text());
   }
   const b64=texts.join('').replace(/\s+/g,'');
   const compressed=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
-  if(!('DecompressionStream' in window)) throw new Error('This browser does not support native gzip decompression. Use a current Chromium, Firefox, or Safari browser.');
-  status.textContent='Decompressing artifact…';
+  if(!('DecompressionStream' in window)) throw new Error('A current browser is required.');
   const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
   const bytes=new Uint8Array(await new Response(stream).arrayBuffer());
-  status.textContent='Verifying SHA-256…';
-  const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
-  const actual=[...digest].map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(actual!==expected) throw new Error(`Integrity failure: expected ${expected.slice(0,12)}…, got ${actual.slice(0,12)}…`);
-  status.textContent='Integrity verified. Starting workstation…';
-  const html=new TextDecoder().decode(bytes);
+  const hash=async value=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',value))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(await hash(bytes)!==sourceExpected) throw new Error('Workspace integrity check failed.');
+  let html=new TextDecoder().decode(bytes);
+  html=html.replace('svg.svg-graph,canvas{contain:strict;}','canvas{contain:layout paint;}');
+  html=html.replace(/\n?<section[^>]*id="epistemic-integrity-section"[\s\S]*?<\/section>\n?/,'\n');
+  html=html.replace(/\n?<!-- SECTION 6: MASTER CRITICAL PATH GANTT ENGINE -->[\s\S]*?(?=<section class="cut-corner-panel" id="mindmap-section">)/,'\n');
+  html=html.replace(/\n?<section class="cut-corner-panel" id="gantt-section">[\s\S]*?(?=<section class="cut-corner-panel" id="mindmap-section">)/,'\n');
+  html=html.replace(/\n?<section class="cut-corner-panel ambient-surface" id="rights-provenance-footer"[\s\S]*?<\/section>\n?/,'\n');
+  html=html.replace(/\s*<a href="#gantt-section" class="nav-pill">[^<]*<\/a>\s*/,'\n      ');
+  html=html.replace('&#9658; 7. Correlative Mind Map','&#9658; 6. Correlative Mind Map')
+    .replace('&#9658; 8. Procedural Simulators','&#9658; 7. Procedural Simulators')
+    .replace('&#9658; 9. Audio Suite & Downloads','&#9658; 8. Audio Suite & Downloads')
+    .replace('&#9658; 10. Evidence Corpus Archive','&#9658; 9. Evidence Corpus Archive')
+    .replace('7. Universal Correlative Mind Map & Domain Connectors','6. Universal Correlative Mind Map & Domain Connectors')
+    .replace('8. Procedural Phase-Space Video Simulators & Lab Engines','7. Procedural Phase-Space Video Simulators & Lab Engines')
+    .replace('9. Procedural Sonic Suite & Master Audio Download Center','8. Procedural Sonic Suite & Master Audio Download Center')
+    .replace('10. Complete Evidence Corpus Archive & Document Index','9. Complete Evidence Corpus Archive & Document Index');
+  html=html.replace('<span class="badge badge-bio font-mono">// LOCAL-FIRST OPTIMIZED MONOLITH</span>\n          <span class="badge badge-signal font-mono">SOURCE-MAPPED ACADEMIC WORKSTATION</span>\n          <span class="badge badge-amber font-mono">REPRODUCIBILITY AUDIT ENABLED</span>','<span class="badge badge-bio font-mono">// UNIFIED RESEARCH SYNTHESIS</span>\n          <span class="badge badge-signal font-mono">EPISTEMIC • CAUSAL • NARRATIVE</span>');
+  html=html.replace("This unified meta-synthesis unifies the complete 143-document research archive into a streamlined, high-speed, zero-dependency workstation. Unnecessary bloated telemetry has been removed to maximize clarity and responsiveness. All embedded diagrams and theoretical figures—including Eric Berlatsky's two-axis narrative framing graphs (Fig. 1–3), comic grid/inset gutter topologies, and Marie-Laure Ryan's nested frame models—are rendered in crisp, scalable vector graphics alongside interactive detachable viewports and 16 generative Web Audio sound keys with instant .WAV downloads.","This unified meta-synthesis organizes the 143-document research archive across epistemic, causal, narrative, phenomenological, and empirical domains. Embedded diagrams and theoretical figures include Eric Berlatsky's two-axis narrative framing graphs, comic grid/inset gutter topologies, Marie-Laure Ryan's nested frame models, detachable interactive visualizations, and 16 generative Web Audio sound keys.");
+  html=html.replace(/<!--([\s\S]*?)-->/g,'');
+  html=html.replace(/\/\*[^!][\s\S]*?\*\//g,'');
+  html=html.replace(/\.gantt-outer-container\{[^\n]*\}\n?/g,'')
+    .replace(/\.sticky-task-gutter-header\{[^\n]*\}\n?/g,'')
+    .replace(/\.gantt-track-row\{[^\n]*\}\n?/g,'')
+    .replace(/\.gantt-canvas-lane\{[^\n]*\}\n?/g,'')
+    .replace(/\.gantt-bar[^\n]*\n?/g,'')
+    .replace(/\.gantt-svg-overlay\{[^\n]*\}\n?/g,'')
+    .replace(/\.gantt-toolbar-runtime\{[^\n]*\}\n?/g,'');
+  html=html.replace('.crit-path-banner{align-items:flex-start;flex-direction:column}.sticky-task-gutter-header,.sticky-task-cell{width:230px;min-width:230px}.gantt-svg-overlay{left:230px}','');
+  const renderedBytes=new TextEncoder().encode(html);
+  if(await hash(renderedBytes)!==renderedExpected) throw new Error('Workspace update check failed.');
+  status.textContent='Starting…';
   document.open();
   document.write(html);
   document.close();
 })().catch(err=>{
   const s=document.getElementById('status');
-  if(s) s.textContent='Deployment error: '+err.message;
+  if(s) s.textContent=err.message;
   console.error(err);
 });
 </script></body></html>
