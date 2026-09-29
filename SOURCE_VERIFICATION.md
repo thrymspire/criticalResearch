@@ -1,7 +1,7 @@
 # Primary-source verification ledger
 
 **Audit date:** 2026-09-29  
-**Build:** `2026-09-29-runtime-v7-full-recovery`
+**Build:** `2026-09-29-runtime-v6-source-audited`
 
 This ledger records what was actually checked against the nine primary/source documents supplied for the public research artifact. The PDFs themselves are **not** included in the public GitHub Pages package; they remain source evidence, not redistributed site assets.
 
@@ -17,9 +17,9 @@ This ledger records what was actually checked against the nine primary/source do
 | Luciano Floridi, *Semantic Information and the Correctness Theory of Truth* (2011) | Verified semantic information as well-formed, meaningful, and veridical data and the query/answer correctness model using verification, validation, an adequate model, and proxy access. | `I = D + S + V` is retained only as workstation mnemonic/derived notation, not as Floridi's published equation. |
 | Robert Sokolowski, *Making Distinctions* (1979) | Verified that distinctions arise against obscurity, depend on imagination across possible settings, precede judgment and definition, and articulate terms together while registering them as separate. | The 1979 paper is no longer used as direct support for the later piece/moment mereology taxonomy; that material remains source-mapped to other Sokolowski works pending their own audit. |
 
-## Remaining primary-source request
+## Physiology model status
 
-The exact Marsha Linehan/DBT source used for the document's displayed TIPP/dive-reflex numerical heart-rate/HRV/cortisol/BOLD/timing values is still needed before those values can be promoted to source-verified status.
+The displayed TIPP/dive-reflex heart-rate, HRV, cortisol, BOLD, and timing values remain explicitly synthetic/illustrative. No additional Linehan/DBT source is required unless those values are later intended to be presented as measured empirical findings.
 
 ## Publication and privacy boundary
 
