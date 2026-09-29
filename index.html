@@ -14,7 +14,7 @@
 <script>
 (async()=>{
   const sourceExpected='88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956';
-  const renderedExpected='44d239c1a727d58d80edf7cf9fcf147abc099f624ac6e34ac61fe4d3a4de382d';
+  const renderedExpected='3a283227afc89d566bd20cb23e22ef008a6b41964374b3ade96d0c77ec78d4a8';
   const status=document.getElementById('status');
   const parts=Array.from({length:8},(_,i)=>`./payload-${String(i).padStart(2,'0')}.b64`);
   const texts=[];
@@ -32,6 +32,7 @@
   if(await hash(bytes)!==sourceExpected) throw new Error('Workspace integrity check failed.');
   let html=new TextDecoder().decode(bytes);
   html=html.replace('svg.svg-graph,canvas{contain:strict;}','canvas{contain:layout paint;}');
+  html=html.replace('main.container > section{content-visibility:auto;contain-intrinsic-size:900px;}','main.container > section{content-visibility:visible;contain-intrinsic-size:auto;}');
   html=html.replace(/\n?<section[^>]*id="epistemic-integrity-section"[\s\S]*?<\/section>\n?/,'\n');
   html=html.replace(/\n?<!-- SECTION 6: MASTER CRITICAL PATH GANTT ENGINE -->[\s\S]*?(?=<section class="cut-corner-panel" id="mindmap-section">)/,'\n');
   html=html.replace(/\n?<section class="cut-corner-panel" id="gantt-section">[\s\S]*?(?=<section class="cut-corner-panel" id="mindmap-section">)/,'\n');
