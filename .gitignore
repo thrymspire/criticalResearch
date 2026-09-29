@@ -1,0 +1,29 @@
+# Operating System Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary & Log Files
+*.log
+*.tmp
+test.txt
+
+# Python & Environment Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+.env
+
+# Editor & Agent Metadata
+.antigravity/
+.vscode/
+.idea/
+
+# Local Archives & Intermediate Builds
+*.zip
+20260928_21*.html
+20260928_2232*.html
+20260928_2238*.html
+20260928_2239*.html
