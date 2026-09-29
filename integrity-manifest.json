@@ -1,0 +1,67 @@
+{
+  "build": "2026-09-29-runtime-v6-source-audited-recovery",
+  "canonical_source_html_sha256": "517497cd9c0eaef99899caa887d202ed163a81689583a68db3dc0097d30a83f5",
+  "public_sha256": "88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956",
+  "local_sha256": "0ee75ab340bd14e58db00c9f80430722fb251fc4900c8eec9a9559f4163523ef",
+  "runtime_dependencies": [],
+  "external_runtime_assets": 0,
+  "public_embedded_primary_pdf_bytes": false,
+  "repository": "thrymspire/criticalResearch",
+  "expected_pages_url": "https://thrymspire.github.io/criticalResearch/",
+  "primary_source_audit": {
+    "audit_date": "2026-09-29",
+    "sources_checked": 9,
+    "source_sha256": {
+      "Berlatsky-LostGutterWithin-2009.pdf": "1e23e0a4da7a32bdb9b2c7c1cf74a89599e0059118a86768bdb12ec689a03a35",
+      "When_to_expect_CF_violations_and_why_it_matters.pdf": "73c8dbfd8bfa163c0da30f2e87ef5fd507b9dbcd35f346d0a54ac72db3f57864",
+      "Brainerd-NegativeEmotionCause-2008.pdf": "b815f70548770fc4142f249180d5229dc6048a0ec34355bae80414264c7545ac",
+      "Ireland-LanguageStyleMatching-2011.pdf": "f5ea122e1a07c0c046cb78ac07aa7ef4d42a247a996f1bf8d693a5f5159a71db",
+      "Sussman-EmotionalDistractorsEnhance-2013.pdf": "2c9f9fd018c6f434de59e43f541491932a6f03719a96ba5d89391ccfe514a722",
+      "Boothby-SharedExperiencesAmplified-2014.pdf": "af1298daae07aa14eb03844165f1d771a7ec2ab7f67b530093f2b0a548fda7fc",
+      "SCARRY-BeautyWrong-1999.pdf": "71529230f9233cc3fd4f97ce83055accf3eb1c4350826c4b6c1abf8ee3a274da",
+      "Floridi-SemanticInformationCorrectness-2011.pdf": "52cceec1785f227086cbe79c65fbe93154910f9c86c55a0ac37851abf2d0c599",
+      "Sokolowski-MakingDistinctions-1979.pdf": "c2e8dbe3cf6fa5889691848f1743f80f8611604feda9b034ab047ec21982b5b5"
+    },
+    "remaining_primary_request": "Exact Marsha Linehan / DBT source for displayed TIPP/dive-reflex numerical constants"
+  },
+  "explicit_exclusions": [
+    "personal walking/mobility telemetry",
+    "trajectory/location traces",
+    "Wi-Fi positioning matrices",
+    "GPS/geolocation datasets",
+    "derived movement/OD matrices",
+    "canonical_spatial_points.geojson",
+    "canonical_spatial_telemetry.json",
+    "physical_mobility_daily_timeseries.json",
+    "rf_wifi_positioning_matrix.json",
+    "spatial_mobility_graph_od_matrix.json"
+  ],
+  "preserved": [
+    "existing HTML research content",
+    "inline SVG figures",
+    "canvas simulations",
+    "procedural audio keys",
+    "Gantt/task inspector",
+    "mind map",
+    "search/navigation",
+    "detachable graphs"
+  ],
+  "truthfulness_policy": {
+    "source_anchored": "directly checked against an identified supplied source where marked",
+    "derived_synthesis": "interpretive relation or workstation notation",
+    "illustrative_model": "not raw empirical data",
+    "source_mapped": "citation known but exact primary source not audited in this revision"
+  },
+  "quality_gates": {
+    "original_ids_preserved": true,
+    "missing_original_ids": 0,
+    "inline_handler_functions_resolved": true,
+    "javascript_node_check": "pass",
+    "excluded_mobility_dataset_filenames_present": false
+  },
+  "hardening": {
+    "network_connections": "blocked by CSP connect-src none",
+    "png_export_provenance": true,
+    "wav_riff_info_provenance": true
+  }
+}
