@@ -89,11 +89,11 @@ The interface employs the **Alien Bioluminescent / Cybernetic Void** design lang
 
 The synthesis exists as a standalone, zero-dependency browser application:
 
-- **Primary Entry Point:** [`index.html`](file:///C:/Users/Thrym/Desktop/critical%20Report/index.html)
-- **Timestamped Canonical Build:** [`20260928_224007_unified_critical_epistemic_spatial_synthesis.html`](file:///C:/Users/Thrym/Desktop/critical%20Report/20260928_224007_unified_critical_epistemic_spatial_synthesis.html)
-- **Alien Artifacts Destination:** [`Alien Artifacts/20260928_224007_unified_critical_epistemic_spatial_synthesis.html`](file:///C:/Users/Thrym/Desktop/Alien%20Artifacts/20260928_224007_unified_critical_epistemic_spatial_synthesis.html)
+- **Live Web Deployment:** [https://thrymspire.github.io/criticalResearch/](https://thrymspire.github.io/criticalResearch/)
+- **Primary Entry Point:** [`index.html`](index.html)
+- **Timestamped Canonical Build:** [`20260928_224007_unified_critical_epistemic_spatial_synthesis.html`](20260928_224007_unified_critical_epistemic_spatial_synthesis.html)
 
-To launch the workstation, simply double-click `index.html` or open it in any modern browser (Chrome, Firefox, Edge, Safari). No web server, Node.js runtime, or compilation step is required.
+To launch the workstation locally, simply double-click `index.html` or open it in any modern browser (Chrome, Firefox, Edge, Safari). No web server, Node.js runtime, or compilation step is required. Alternatively, visit the live GitHub Pages deployment above.
 
 ---
 
