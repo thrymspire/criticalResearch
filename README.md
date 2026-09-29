@@ -1,7 +1,7 @@
 # Unified Critical Path — source-audited standalone build
 
 ## Public deployment
-`index.html` is a small first-party GitHub Pages loader. It fetches eight same-origin payload chunks, reconstructs the canonical public artifact in-browser, verifies SHA-256 `271a0e0b1ef29c1c72b01fd825bc47920a56c4919e0c39abe39052be863cef8e`, and only then executes it. This transport exists because the connected repository writer is optimized for bounded text writes; it is not an application dependency.
+`index.html` is a small first-party GitHub Pages loader. It fetches eight same-origin payload chunks, reconstructs the canonical public artifact in-browser, verifies SHA-256 `88d29ace69363c11677fe329f9b6f3f72379c3251b5bb4d95099b8f499212956`, and only then executes it. This transport exists because the connected repository writer is optimized for bounded text writes; it is not an application dependency.
 
 The reconstructed workstation remains zero-runtime-dependency: no framework, package manager, CDN, analytics service, or external asset request is required after load.
 
